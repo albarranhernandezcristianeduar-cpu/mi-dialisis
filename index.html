@@ -1,87 +1,196 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#a3c1ad">
-    <title>Control de Diálisis Orgánico</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-</head>
-<body>
+/* --- ESTILO CLÍNICO PROFESIONAL PREMIUM PARA MI DIÁLISIS --- */
 
-    <div class="container">
-        <h1>🌱 Mi Control de Diálisis</h1>
-        
-        <form id="dialisisForm">
-            <label>Día / Fecha:</label>
-            <input type="date" id="fecha" required>
+/* 1. Paleta de Colores de Alta Confianza */
+:root {
+  --color-fondo-clínico: #f9fbff;  /* Blanco azulado muy suave */
+  --color-primario-profesional: #1565c0;  /* Azul médico profundo */
+  --color-secundario-brillante: #3a85db;  /* Azul brillante para acentos */
+  --color-texto-principal: #111d37;  /* Azul oscuro casi negro */
+  --color-texto-suave: #62748f;      /* Gris azulado oscuro */
+  --color-borde-input: #d0dceb;     /* Gris azulado muy claro */
+  --color-blanco-puro: #ffffff;
+* --color-alerta-clinica: #ff3b30;    /* Rojo clínico intenso */
+  --color-exito-profesional: #34c759; /* Verde de salud intenso */
+  --color-sombra: rgba(10, 40, 80, 0.08); /* Sombra muy suave y limpia */
+}
 
-            <div class="grid">
-                <div>
-                    <label>Hora Inicio:</label>
-                    <input type="time" id="horaInicio">
-                </div>
-                <div>
-                    <label>Hora Término:</label>
-                    <input type="time" id="horaTermino">
-                </div>
-            </div>
+/* 2. Reset y Tipografía Limpia */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-            <label>Bolsas utilizadas:</label>
-            <select id="bolsas">
-                <option value="1.5%">1.5% (Amarilla)</option>
-                <option value="2.5%">2.5% (Verde)</option>
-                <option value="4.25%">4.25% (Roja)</option>
-            </select>
+body {
+  background-color: var(--color-fondo-clínico);
+  color: var(--color-texto-principal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
 
-            <div class="grid">
-                <div>
-                    <label>UF Total (ml):</label>
-                    <input type="number" id="ufTotal" placeholder="Ej: 520">
-                </div>
-                <div>
-                    <label>Drenaje (ml):</label>
-                    <input type="number" id="drenaje" placeholder="Ej: 2170">
-                </div>
-            </div>
+/* 3. Contenedor de la Tarjeta Clínica */
+.app-container {
+  background-color: var(--color-blanco-puro);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px var(--color-sombra);
+  border: 1px solid rgba(21, 101, 192, 0.05);
+}
 
-            <div class="grid">
-                <div>
-                    <label>Líquidos:</label>
-                    <input type="number" id="liquidos" placeholder="ml">
-                </div>
-                <div>
-                    <label>T.A. (Presión):</label>
-                    <input type="text" id="presion" placeholder="120/80">
-                </div>
-            </div>
+/* Encabezado Serio y Moderno */
+h1 {
+  text-align: center;
+  color: var(--color-texto-principal);
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
 
-            <label>Glucosa (mg/dL):</label>
-            <input type="number" id="glucosa" placeholder="Ej: 110">
+/* 4. Formularios y Inputs de Ultra-Contraste */
+fieldset {
+  border: none;
+  margin-bottom: 25px;
+}
 
-            <label>Observaciones / Notas:</label>
-            <textarea id="notas" rows="3" placeholder="¿Cómo te sentiste hoy?"></textarea> 
+legend {
+  color: var(--color-primario-profesional);
+  font-weight: 700;
+  padding: 0;
+  font-size: 19px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(21, 101, 192, 0.1);
+  display: block;
+  width: 100%;
+}
 
-            <button type="button" onclick="guardarDatos()">💾 Registrar Sesión</button>
-            <button type="button" id="btnPdf">📄 Descargar Reporte PDF</button>
-        </form>
+.input-group {
+  margin-bottom: 18px;
+}
 
-        <div id="alerta"></div>
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--color-texto-principal);
+  font-size: 15px;
+}
 
-    <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h3>Historial Reciente</h3>
-    <button type="button" onclick="borrarTodo()" style="width: auto; padding: 5px 15px; font-size: 0.8rem; background-color: #f0e0d6; color: #a9715a; margin-top: 0;">🗑️ Borrar Todo</button>
-    </div>
-    <div id="listaHistorial"></div>
-    </div>
+input[type="number"],
+input[type="time"],
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid var(--color-borde-input);
+  border-radius: 12px;
+  background-color: var(--color-blanco-puro);
+  color: var(--color-texto-principal);
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
 
-    <script type="module" src="script.js"></script>
-    </body>
-    </html>
+/* Efecto de foco profesional */
+input:focus, select:focus {
+  border-color: var(--color-secundario-brillante);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(58, 133, 219, 0.1);
+}
+
+/* 5. Botones Médicos Digitales */
+.btn-primary {
+  width: 100%;
+  padding: 18px;
+  background-color: var(--color-primario-profesional);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secundario-brillante);
+  transform: translateY(-2px);
+}
+
+/* Botón PDF Minimalista */
+.btn-pdf {
+  width: 100%;
+  padding: 16px;
+  background-color: transparent;
+  color: var(--color-primario-profesional);
+  border: 2px solid var(--color-primario-profesional);
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pdf:hover {
+  background-color: rgba(21, 101, 192, 0.05);
+}
+
+/* 6. Historial Clínico */
+#historial-container {
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--color-texto-principal);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.historial-item {
+  background-color: var(--color-fondo-clínico);
+  border: 1px solid var(--color-borde-input);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+  border-left: 6px solid var(--color-primario-profesional);
+  box-shadow: 0 4px 10px var(--color-sombra);
+}
+
+.historial-item.alerta {
+  background-color: #fff5f5;
+  border-color: #ffcccc;
+  border-left-color: var(--color-alerta-clinica);
+}
+
+.historial-item h4 {
+  color: var(--color-texto-principal);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.historial-item span {
+  display: block;
+  font-size: 14px;
+  color: var(--color-texto-suave);
+  margin-bottom: 4px;
+}
+
+/* Toque final: Animación suave */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.app-container {
+  animation: fadeInSlide 0.5s ease-out;
+}
