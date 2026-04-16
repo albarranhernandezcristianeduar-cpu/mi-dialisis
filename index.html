@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#a3c1ad">
-    <title>Control de Diálisis Orgánico</title>
+    <title>Mi Control de Diálisis</title>
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-512.png">
+    <link rel="apple-touch-icon" href="icon-512.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-
     <div class="container">
         <h1>🌱 Mi Control de Diálisis</h1>
         
@@ -72,16 +69,16 @@
             <button type="button" id="btnPdf">📄 Descargar Reporte PDF</button>
         </form>
 
-        <div id="alerta"></div>
-
-    <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h3>Historial Reciente</h3>
-    <button type="button" onclick="borrarTodo()" style="width: auto; padding: 5px 15px; font-size: 0.8rem; background-color: #f0e0d6; color: #a9715a; margin-top: 0;">🗑️ Borrar Todo</button>
-    </div>
-    <div id="listaHistorial"></div>
+        <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee; opacity: 0.3;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <h3>Historial Reciente</h3>
+            <button type="button" onclick="borrarTodo()" style="width: auto; padding: 8px 15px; font-size: 0.8rem; background-color: #ba1a1a; color: white; margin-top: 0;">🗑️ Borrar Todo</button>
+        </div>
+        
+        <div id="listaHistorial"></div>
     </div>
 
     <script type="module" src="script.js"></script>
-    </body>
-    </html>
+</body>
+</html>
