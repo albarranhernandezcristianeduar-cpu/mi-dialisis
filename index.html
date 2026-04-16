@@ -3,94 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Control de Diálisis</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="icon-512.png">
-    <link rel="apple-touch-icon" href="icon-512.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#a3c1ad">
+    <title>Control de Diálisis Orgánico</title>
+    <link rel="stylesheet" href="style.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <div class="app-container">
+
+    <div class="container">
         <h1>🌱 Mi Control de Diálisis</h1>
         
-        <form id="dialisis-form">
-            <fieldset>
-                <legend>Datos de la Sesión</legend>
-                
-                <div class="input-group">
-                    <label>Día / Fecha:</label>
-                    <input type="date" id="fecha" required>
-                </div>
+        <form id="dialisisForm">
+            <label>Día / Fecha:</label>
+            <input type="date" id="fecha" required>
 
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-group" style="flex: 1;">
-                        <label>Hora Inicio:</label>
-                        <input type="time" id="hora-inicio" required>
-                    </div>
-                    <div class="input-group" style="flex: 1;">
-                        <label>Hora Término:</label>
-                        <input type="time" id="hora-fin" required>
-                    </div>
+            <div class="grid">
+                <div>
+                    <label>Hora Inicio:</label>
+                    <input type="time" id="horaInicio">
                 </div>
-
-                <div class="input-group">
-                    <label>Bolsas utilizadas:</label>
-                    <select id="tipo-bolsa">
-                        <option value="1.5% (Amarilla)">1.5% (Amarilla)</option>
-                        <option value="2.5% (Verde)">2.5% (Verde)</option>
-                        <option value="4.25% (Roja)">4.25% (Roja)</option>
-                    </select>
+                <div>
+                    <label>Hora Término:</label>
+                    <input type="time" id="horaTermino">
                 </div>
+            </div>
 
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-group" style="flex: 1;">
-                        <label>UF Total (ml):</label>
-                        <input type="number" id="uf-total" placeholder="Ej: 520">
-                    </div>
-                    <div class="input-group" style="flex: 1;">
-                        <label>Drenaje (ml):</label>
-                        <input type="number" id="drenaje" placeholder="Ej: 2170">
-                    </div>
+            <label>Bolsas utilizadas:</label>
+            <select id="bolsas">
+                <option value="1.5%">1.5% (Amarilla)</option>
+                <option value="2.5%">2.5% (Verde)</option>
+                <option value="4.25%">4.25% (Roja)</option>
+            </select>
+
+            <div class="grid">
+                <div>
+                    <label>UF Total (ml):</label>
+                    <input type="number" id="ufTotal" placeholder="Ej: 520">
                 </div>
-
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-group" style="flex: 1;">
-                        <label>Líquidos (ml):</label>
-                        <input type="number" id="liquidos" placeholder="ml">
-                    </div>
-                    <div class="input-group" style="flex: 1;">
-                        <label>T.A. (Presión):</label>
-                        <input type="text" id="presion" placeholder="120/80">
-                    </div>
+                <div>
+                    <label>Drenaje (ml):</label>
+                    <input type="number" id="drenaje" placeholder="Ej: 2170">
                 </div>
+            </div>
 
-                <div class="input-group">
-                    <label>Glucosa (mg/dL):</label>
-                    <input type="number" id="glucosa" placeholder="Ej: 110">
+            <div class="grid">
+                <div>
+                    <label>Líquidos:</label>
+                    <input type="number" id="liquidos" placeholder="ml">
                 </div>
-
-                <div class="input-group">
-                    <label>Observaciones / Notas:</label>
-                    <textarea id="notas" rows="3" placeholder="¿Cómo te sentiste hoy?"></textarea>
+                <div>
+                    <label>T.A. (Presión):</label>
+                    <input type="text" id="presion" placeholder="120/80">
                 </div>
-            </fieldset>
+            </div>
 
-            <button type="submit" class="btn-primary">💾 Registrar Sesión</button>
+            <label>Glucosa (mg/dL):</label>
+            <input type="number" id="glucosa" placeholder="Ej: 110">
+
+            <label>Observaciones / Notas:</label>
+            <textarea id="notas" rows="3" placeholder="¿Cómo te sentiste hoy?"></textarea> 
+
+            <button type="button" onclick="guardarDatos()">💾 Registrar Sesión</button>
+            <button type="button" id="btnPdf">📄 Descargar Reporte PDF</button>
         </form>
 
-        <button id="download-pdf" class="btn-pdf" style="margin-top: 15px;">📄 Descargar Reporte PDF</button>
+        <div id="alerta"></div>
 
-        <div id="historial-container">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2>Historial Reciente</h2>
-                <button id="borrar-todo" style="background: #ba1a1a; color: white; border: none; padding: 5px 10px; border-radius: 8px; cursor: pointer;">🗑️ Borrar Todo</button>
-            </div>
-            <div id="lista-historial"></div>
-        </div>
+    <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h3>Historial Reciente</h3>
+    <button type="button" onclick="borrarTodo()" style="width: auto; padding: 5px 15px; font-size: 0.8rem; background-color: #f0e0d6; color: #a9715a; margin-top: 0;">🗑️ Borrar Todo</button>
+    </div>
+    <div id="listaHistorial"></div>
     </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <script type="module" src="script.js"></script>
+    </body>
+    </html>
