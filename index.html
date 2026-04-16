@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Diálisis</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>Mi Control de Diálisis</title>
+    <link rel="stylesheet" href="style.css?v=2">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <div class="main-card">
         <h1>🌱 Mi Control de Diálisis</h1>
+        
         <form id="dialisisForm">
             <label>Día / Fecha:</label>
             <input type="date" id="fecha" required>
@@ -35,12 +36,12 @@
 
             <div class="row">
                 <div>
-                    <label>UF (ml):</label>
-                    <input type="number" id="ufTotal" placeholder="520">
+                    <label>UF Total (ml):</label>
+                    <input type="number" id="ufTotal" placeholder="Ej: 520">
                 </div>
                 <div>
                     <label>Drenaje (ml):</label>
-                    <input type="number" id="drenaje" placeholder="2170">
+                    <input type="number" id="drenaje" placeholder="Ej: 2170">
                 </div>
             </div>
 
@@ -50,16 +51,16 @@
                     <input type="number" id="liquidos" placeholder="ml">
                 </div>
                 <div>
-                    <label>Presión:</label>
+                    <label>T.A. (Presión):</label>
                     <input type="text" id="presion" placeholder="120/80">
                 </div>
             </div>
 
             <label>Glucosa (mg/dL):</label>
-            <input type="number" id="glucosa" placeholder="110">
+            <input type="number" id="glucosa" placeholder="Ej: 110">
 
-            <label>Notas:</label>
-            <textarea id="notas" rows="2"></textarea> 
+            <label>Observaciones:</label>
+            <textarea id="notas" rows="2" placeholder="¿Cómo te sientes?"></textarea> 
 
             <button type="button" class="btn-save" onclick="guardarDatos()">💾 Registrar Sesión</button>
             <button type="button" class="btn-pdf" id="btnPdf">📄 Descargar Reporte PDF</button>
