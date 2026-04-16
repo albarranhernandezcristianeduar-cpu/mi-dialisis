@@ -1,81 +1,93 @@
+/* --- DISEÑO AZUL PROFESIONAL --- */
 :root {
-    --primary-color: #556b2f;
-    --bg-color: #fdfaf5;
-    --accent-color: #a3c1ad;
-    --success-color: #f4d3c4;
-    --warning-color: #e74c3c;
-}
-
-@keyframes aparecer {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  --azul-medico: #1565c0;
+  --azul-claro: #e3f2fd;
+  --blanco: #ffffff;
+  --texto: #1a237e;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--bg-color);
-    margin: 0; padding: 20px;
-    display: flex; justify-content: center;
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--texto);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 .container {
-    background-color: var(--bg-color);
-    padding: 25px; /* Bajamos un poco el padding para ganar espacio en móvil */
-    border-radius: 40px; 
-    box-shadow: 20px 20px 60px #d9d6d1, -20px -20px 60px #ffffff;
-    
-    max-width: 450px; 
-    width: 92%; /* <--- CAMBIO: Deja un 4% de margen a cada lado */
-    
-    margin: 15px auto; /* <--- AGREGADO: Centra el cuadro y lo separa del borde superior */
-    animation: aparecer 0.8s ease-out;
-}
+  background-color: var(--blanco);
+  max-width: 500px;
+  width: 100%;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-h1 { color: var(--primary-color); text-align: center; }
+h1 {
+  text-align: center;
+  color: var(--azul-medico);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
 
-label { display: block; margin-top: 18px; font-weight: 600; color: var(--primary-color); }
+label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  font-size: 0.9rem;
+}
 
 input, select, textarea {
-    width: 100%; padding: 15px; margin-top: 8px;
-    border: none; border-radius: 20px;
-    background-color: var(--bg-color);
-    box-shadow: inset 6px 6px 12px #d9d6d1, inset -6px -6px 12px #ffffff;
-    transition: all 0.3s ease;
-    box-sizing: border-box; font-family: inherit;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #d1d9e6;
+  border-radius: 10px;
+  box-sizing: border-box; /* Importante para que no se salga del cuadro */
 }
 
-input:focus, textarea:focus {
-    outline: none; transform: scale(1.02);
-    box-shadow: inset 8px 8px 16px #c2bfbb, inset -8px -8px 16px #ffffff;
+input:focus {
+  border-color: var(--azul-medico);
+  outline: none;
 }
 
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
 
 button {
-    width: 100%; border: none; padding: 18px;
-    border-radius: 30px; font-weight: bold;
-    cursor: pointer; margin-top: 20px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-button:hover { transform: translateY(-3px); }
-button:active { transform: scale(0.95); }
-
-button[onclick*="guardarDatos"] {
-    background: var(--accent-color); color: white;
-    box-shadow: 8px 8px 20px #d1ddd1, -8px -8px 20px #ffffff;
+button[onclick="guardarDatos()"] {
+  background-color: var(--azul-medico);
+  color: white;
 }
 
 #btnPdf {
-    background: var(--success-color) !important;
-    color: #a9715a !important;
-    box-shadow: 8px 8px 20px #e8d0c8, -8px -8px 20px #ffffff;
+  background-color: white;
+  color: var(--azul-medico);
+  border: 2px solid var(--azul-medico);
 }
 
-#listaHistorial div {
-    background: #fdfaf5; margin-bottom: 12px;
-    padding: 18px; border-radius: 25px;
-    box-shadow: 8px 8px 20px #d9d6d1, -8px -8px 20px #ffffff;
-    animation: aparecer 0.5s ease-out;
+button:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.item-historial {
+  background: var(--azul-claro);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  border-left: 5px solid var(--azul-medico);
 }
