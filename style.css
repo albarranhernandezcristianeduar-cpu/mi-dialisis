@@ -1,93 +1,191 @@
-/* --- DISEÑO AZUL PROFESIONAL --- */
+/* --- ESTILO CLÍNICO PROFESIONAL EXACTO PARA MI DIÁLISIS --- */
+
+/* 1. Paleta de Colores de Alta Confianza */
 :root {
-  --azul-medico: #1565c0;
-  --azul-claro: #e3f2fd;
-  --blanco: #ffffff;
-  --texto: #1a237e;
+  --color-fondo-clínico: #f9fbff;  /* Blanco azulado muy suave (para la tarjeta) */
+  --color-primario-profesional: #1565c0;  /* Azul médico profundo (botones, bordes focales) */
+  --color-secundario-brillante: #3a85db;  /* Azul brillante para acentos */
+  --color-texto-principal: #111d37;  /* Azul oscuro casi negro */
+  --color-texto-suave: #62748f;      /* Gris azulado oscuro */
+  --color-borde-input: #d0dceb;     /* Gris azulado muy claro */
+  --color-blanco-puro: #ffffff;
+* --color-alerta-clinica: #ff3b30;    /* Rojo clínico intenso */
+  --color-exito-profesional: #34c759; /* Verde de salud intenso */
+  --color-sombra: rgba(10, 40, 80, 0.08); /* Sombra muy suave y limpia */
+}
+
+/* 2. Reset y Tipografía Limpia */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: #f0f4f8;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--texto);
+  /* Fondo Clínico Desenfocado Exacto */
+  background-image: linear-gradient(rgba(240, 244, 248, 0.8), rgba(240, 244, 248, 0.8)), url('image_17.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color-texto-principal);
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 20px;
 }
 
-.container {
-  background-color: var(--blanco);
-  max-width: 500px;
+/* 3. Contenedor de la Tarjeta Clínica Profesional */
+.app-container {
+  background-color: var(--color-blanco-puro);
   width: 100%;
-  padding: 25px;
+  max-width: 480px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 30px;
+  box-shadow: 0 10px 30px var(--color-sombra);
+  border: 1px solid rgba(21, 101, 192, 0.05);
+  position: relative;
 }
 
+/* Encabezado Serio y Moderno */
 h1 {
   text-align: center;
-  color: var(--azul-medico);
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  color: var(--color-texto-principal);
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* 4. Formularios y Inputs de Ultra-Contraste */
+fieldset {
+  border: none;
+  margin-bottom: 25px;
+}
+
+legend {
+  color: var(--color-primario-profesional);
+  font-weight: 700;
+  padding: 0;
+  font-size: 19px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(21, 101, 192, 0.1);
+  display: block;
+  width: 100%;
+}
+
+.input-group {
+  margin-bottom: 18px;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  margin: 10px 0 5px;
-  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--color-texto-principal);
+  font-size: 15px;
 }
 
-input, select, textarea {
+input[type="number"],
+input[type="time"],
+input[type="text"],
+input[type="date"],
+select {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #d1d9e6;
-  border-radius: 10px;
-  box-sizing: border-box; /* Importante para que no se salga del cuadro */
-}
-
-input:focus {
-  border-color: var(--azul-medico);
-  outline: none;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
-  margin-top: 15px;
-  border: none;
+  padding: 16px;
+  border: 2px solid var(--color-borde-input);
   border-radius: 12px;
-  font-weight: bold;
+  background-color: var(--color-blanco-puro);
+  color: var(--color-texto-principal);
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efecto de foco profesional exacto */
+input:focus, select:focus {
+  border-color: var(--color-secundario-brillante);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(58, 133, 219, 0.1);
+}
+
+/* 5. Botones Médicos Digitales Exactos */
+.btn-primary {
+  width: 100%;
+  padding: 18px;
+  background-color: var(--color-primario-profesional);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.2);
 }
 
-button[onclick="guardarDatos()"] {
-  background-color: var(--azul-medico);
-  color: white;
-}
-
-#btnPdf {
-  background-color: white;
-  color: var(--azul-medico);
-  border: 2px solid var(--azul-medico);
-}
-
-button:hover {
-  opacity: 0.8;
+.btn-primary:hover {
+  background-color: var(--color-secundario-brillante);
   transform: translateY(-2px);
 }
 
-.item-historial {
-  background: var(--azul-claro);
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 10px;
-  border-left: 5px solid var(--azul-medico);
+/* Botón PDF Minimalista Profesional */
+.btn-pdf {
+  width: 100%;
+  padding: 16px;
+  background-color: transparent;
+  color: var(--color-primario-profesional);
+  border: 2px solid var(--color-primario-profesional);
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pdf:hover {
+  background-color: rgba(21, 101, 192, 0.05);
+}
+
+/* 6. Historial Clínico Exacto */
+#historial-container {
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--color-texto-principal);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.historial-item {
+  background-color: var(--color-fondo-clínico);
+  border: 1px solid var(--color-borde-input);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+  border-left: 6px solid var(--color-primario-profesional);
+  box-shadow: 0 4px 10px var(--color-sombra);
+}
+
+.historial-item.alerta {
+  background-color: #fff5f5;
+  border-color: #ffcccc;
+  border-left-color: var(--color-alerta-clinica);
+}
+
+.historial-item h4 {
+  color: var(--color-texto-principal);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.historial-item span {
+  display: block;
+  font-size: 14px;
+  color: var(--color-texto-suave);
+  margin-bottom: 4px;
 }
