@@ -1,54 +1,86 @@
 body {
-    background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('fondo.jpg') !important;
+    /* Aquí llamamos a la imagen. Asegúrate que el nombre sea fondo.jpg */
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('fondo.jpg') !important;
     background-size: cover !important;
+    background-position: center !important;
     background-attachment: fixed !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    padding: 20px !important;
+    background-repeat: no-repeat !important;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
 
 .main-card {
-    background: white !important;
-    max-width: 450px !important;
-    width: 100% !important;
-    padding: 25px !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    background: rgba(255, 255, 255, 0.95);
+    max-width: 460px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-h1 { color: #1565c0 !important; text-align: center !important; }
+h1 { color: #004a99; text-align: center; margin-bottom: 25px; font-weight: 800; }
 
-/* ESTO ARREGLA LOS BOTONES GRISES */
+label { display: block; margin: 12px 0 5px; font-weight: 700; color: #1a237e; font-size: 14px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d0dceb;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: white;
+}
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .btn-save {
-    background-color: #1565c0 !important;
+    background-color: #0056b3 !important;
     color: white !important;
-    padding: 15px !important;
-    border-radius: 12px !important;
-    border: none !important;
-    width: 100% !important;
-    font-weight: bold !important;
-    margin-top: 15px !important;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
 }
 
 .btn-pdf {
     background-color: white !important;
-    color: #1565c0 !important;
-    border: 2px solid #1565c0 !important;
-    padding: 15px !important;
-    border-radius: 12px !important;
-    width: 100% !important;
-    font-weight: bold !important;
-    margin-top: 10px !important;
+    color: #0056b3 !important;
+    border: 2px solid #0056b3 !important;
 }
 
 .btn-delete {
-    background: #ba1a1a !important;
+    background: #b71c1c !important;
     color: white !important;
-    border: none !important;
-    padding: 5px 12px !important;
-    border-radius: 8px !important;
+    width: auto;
+    padding: 8px 18px;
+    font-size: 13px;
+    margin: 0;
 }
 
-.row { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; }
-input, select, textarea { width: 100% !important; padding: 12px !important; border: 1px solid #ccc !important; border-radius: 10px !important; box-sizing: border-box !important; }
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
