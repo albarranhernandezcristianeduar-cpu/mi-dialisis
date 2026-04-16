@@ -1,0 +1,81 @@
+:root {
+    --primary-color: #556b2f;
+    --bg-color: #fdfaf5;
+    --accent-color: #a3c1ad;
+    --success-color: #f4d3c4;
+    --warning-color: #e74c3c;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0; padding: 20px;
+    display: flex; justify-content: center;
+}
+
+.container {
+    background-color: var(--bg-color);
+    padding: 25px; /* Bajamos un poco el padding para ganar espacio en móvil */
+    border-radius: 40px; 
+    box-shadow: 20px 20px 60px #d9d6d1, -20px -20px 60px #ffffff;
+    
+    max-width: 450px; 
+    width: 92%; /* <--- CAMBIO: Deja un 4% de margen a cada lado */
+    
+    margin: 15px auto; /* <--- AGREGADO: Centra el cuadro y lo separa del borde superior */
+    animation: aparecer 0.8s ease-out;
+}
+}
+
+h1 { color: var(--primary-color); text-align: center; }
+
+label { display: block; margin-top: 18px; font-weight: 600; color: var(--primary-color); }
+
+input, select, textarea {
+    width: 100%; padding: 15px; margin-top: 8px;
+    border: none; border-radius: 20px;
+    background-color: var(--bg-color);
+    box-shadow: inset 6px 6px 12px #d9d6d1, inset -6px -6px 12px #ffffff;
+    transition: all 0.3s ease;
+    box-sizing: border-box; font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none; transform: scale(1.02);
+    box-shadow: inset 8px 8px 16px #c2bfbb, inset -8px -8px 16px #ffffff;
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+button {
+    width: 100%; border: none; padding: 18px;
+    border-radius: 30px; font-weight: bold;
+    cursor: pointer; margin-top: 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:hover { transform: translateY(-3px); }
+button:active { transform: scale(0.95); }
+
+button[onclick*="guardarDatos"] {
+    background: var(--accent-color); color: white;
+    box-shadow: 8px 8px 20px #d1ddd1, -8px -8px 20px #ffffff;
+}
+
+#btnPdf {
+    background: var(--success-color) !important;
+    color: #a9715a !important;
+    box-shadow: 8px 8px 20px #e8d0c8, -8px -8px 20px #ffffff;
+}
+
+#listaHistorial div {
+    background: #fdfaf5; margin-bottom: 12px;
+    padding: 18px; border-radius: 25px;
+    box-shadow: 8px 8px 20px #d9d6d1, -8px -8px 20px #ffffff;
+    animation: aparecer 0.5s ease-out;
+}

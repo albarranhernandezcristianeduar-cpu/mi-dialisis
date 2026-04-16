@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#a3c1ad">
+    <title>Control de Diálisis Orgánico</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🌱 Mi Control de Diálisis</h1>
+        
+        <form id="dialisisForm">
+            <label>Día / Fecha:</label>
+            <input type="date" id="fecha" required>
+
+            <div class="grid">
+                <div>
+                    <label>Hora Inicio:</label>
+                    <input type="time" id="horaInicio">
+                </div>
+                <div>
+                    <label>Hora Término:</label>
+                    <input type="time" id="horaTermino">
+                </div>
+            </div>
+
+            <label>Bolsas utilizadas:</label>
+            <select id="bolsas">
+                <option value="1.5%">1.5% (Amarilla)</option>
+                <option value="2.5%">2.5% (Verde)</option>
+                <option value="4.25%">4.25% (Roja)</option>
+            </select>
+
+            <div class="grid">
+                <div>
+                    <label>UF Total (ml):</label>
+                    <input type="number" id="ufTotal" placeholder="Ej: 520">
+                </div>
+                <div>
+                    <label>Drenaje (ml):</label>
+                    <input type="number" id="drenaje" placeholder="Ej: 2170">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label>Líquidos:</label>
+                    <input type="number" id="liquidos" placeholder="ml">
+                </div>
+                <div>
+                    <label>T.A. (Presión):</label>
+                    <input type="text" id="presion" placeholder="120/80">
+                </div>
+            </div>
+
+            <label>Glucosa (mg/dL):</label>
+            <input type="number" id="glucosa" placeholder="Ej: 110">
+
+            <label>Observaciones / Notas:</label>
+            <textarea id="notas" rows="3" placeholder="¿Cómo te sentiste hoy?"></textarea> 
+
+            <button type="button" onclick="guardarDatos()">💾 Registrar Sesión</button>
+            <button type="button" id="btnPdf">📄 Descargar Reporte PDF</button>
+        </form>
+
+        <div id="alerta"></div>
+
+    <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h3>Historial Reciente</h3>
+    <button type="button" onclick="borrarTodo()" style="width: auto; padding: 5px 15px; font-size: 0.8rem; background-color: #f0e0d6; color: #a9715a; margin-top: 0;">🗑️ Borrar Todo</button>
+    </div>
+    <div id="listaHistorial"></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    </body>
+    </html>
