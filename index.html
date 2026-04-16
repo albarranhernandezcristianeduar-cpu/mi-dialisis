@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Control de Diálisis</title>
+    <title>Control de Diálisis</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="icon-512.png">
-    <link rel="apple-touch-icon" href="icon-512.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="main-card">
         <h1>🌱 Mi Control de Diálisis</h1>
         
         <form id="dialisisForm">
             <label>Día / Fecha:</label>
             <input type="date" id="fecha" required>
 
-            <div class="grid">
+            <div class="row">
                 <div>
                     <label>Hora Inicio:</label>
                     <input type="time" id="horaInicio">
@@ -37,7 +34,7 @@
                 <option value="4.25%">4.25% (Roja)</option>
             </select>
 
-            <div class="grid">
+            <div class="row">
                 <div>
                     <label>UF Total (ml):</label>
                     <input type="number" id="ufTotal" placeholder="Ej: 520">
@@ -48,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="grid">
+            <div class="row">
                 <div>
                     <label>Líquidos:</label>
                     <input type="number" id="liquidos" placeholder="ml">
@@ -62,23 +59,21 @@
             <label>Glucosa (mg/dL):</label>
             <input type="number" id="glucosa" placeholder="Ej: 110">
 
-            <label>Observaciones / Notas:</label>
-            <textarea id="notas" rows="3" placeholder="¿Cómo te sentiste hoy?"></textarea> 
+            <label>Observaciones:</label>
+            <textarea id="notas" rows="2"></textarea> 
 
-            <button type="button" onclick="guardarDatos()">💾 Registrar Sesión</button>
-            <button type="button" id="btnPdf">📄 Descargar Reporte PDF</button>
+            <button type="button" class="btn-save" onclick="guardarDatos()">💾 Registrar Sesión</button>
+            <button type="button" class="btn-pdf" id="btnPdf">📄 Descargar Reporte PDF</button>
         </form>
 
-        <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee; opacity: 0.3;">
-        
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-            <h3>Historial Reciente</h3>
-            <button type="button" onclick="borrarTodo()" style="width: auto; padding: 8px 15px; font-size: 0.8rem; background-color: #ba1a1a; color: white; margin-top: 0;">🗑️ Borrar Todo</button>
+        <div class="history-section">
+            <div class="history-header">
+                <h3>Historial</h3>
+                <button onclick="borrarTodo()" class="btn-delete">🗑️ Borrar Todo</button>
+            </div>
+            <div id="listaHistorial"></div>
         </div>
-        
-        <div id="listaHistorial"></div>
     </div>
-
     <script type="module" src="script.js"></script>
 </body>
 </html>
