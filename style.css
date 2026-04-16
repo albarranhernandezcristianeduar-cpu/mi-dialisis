@@ -1,191 +1,103 @@
-/* --- ESTILO CLÍNICO PROFESIONAL EXACTO PARA MI DIÁLISIS --- */
+/* --- ESTILO CLÍNICO PROFESIONAL PREMIUM --- */
 
-/* 1. Paleta de Colores de Alta Confianza */
 :root {
-  --color-fondo-clínico: #f9fbff;  /* Blanco azulado muy suave (para la tarjeta) */
-  --color-primario-profesional: #1565c0;  /* Azul médico profundo (botones, bordes focales) */
-  --color-secundario-brillante: #3a85db;  /* Azul brillante para acentos */
-  --color-texto-principal: #111d37;  /* Azul oscuro casi negro */
-  --color-texto-suave: #62748f;      /* Gris azulado oscuro */
-  --color-borde-input: #d0dceb;     /* Gris azulado muy claro */
-  --color-blanco-puro: #ffffff;
-* --color-alerta-clinica: #ff3b30;    /* Rojo clínico intenso */
-  --color-exito-profesional: #34c759; /* Verde de salud intenso */
-  --color-sombra: rgba(10, 40, 80, 0.08); /* Sombra muy suave y limpia */
+  --azul-medico: #1565c0;       /* Azul principal */
+  --azul-foco: #3a85db;         /* Azul para resaltar */
+  --blanco-puro: #ffffff;
+  --blanco-cristal: rgba(255, 255, 255, 0.96); /* Tarjeta semi-transparente */
+  --texto-oscuro: #111d37;
+  --texto-suave: #62748f;
+  --borde: #d0dceb;
+  --sombra: rgba(0, 0, 0, 0.15);
 }
 
-/* 2. Reset y Tipografía Limpia */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* 1. Configuración del Fondo (Imagen del Consultorio) */
 body {
-  /* Fondo Clínico Desenfocado Exacto */
-  background-image: linear-gradient(rgba(240, 244, 248, 0.8), rgba(240, 244, 248, 0.8)), url('image_17.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: var(--color-texto-principal);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Configuración de la imagen de fondo */
+  background-image: url('fondo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #f0f4f8; /* Color de respaldo si la imagen falla */
 }
 
-/* 3. Contenedor de la Tarjeta Clínica Profesional */
-.app-container {
-  background-color: var(--color-blanco-puro);
+/* 2. Tarjeta Principal (Contenedor) */
+.container {
+  background-color: var(--blanco-cristal);
   width: 100%;
-  max-width: 480px;
-  border-radius: 20px;
+  max-width: 450px;
   padding: 30px;
-  box-shadow: 0 10px 30px var(--color-sombra);
-  border: 1px solid rgba(21, 101, 192, 0.05);
-  position: relative;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px var(--sombra);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px); /* Efecto de desenfoque suave detrás de la tarjeta */
 }
 
-/* Encabezado Serio y Moderno */
+/* 3. Títulos */
 h1 {
   text-align: center;
-  color: var(--color-texto-principal);
-  margin-bottom: 30px;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-/* 4. Formularios y Inputs de Ultra-Contraste */
-fieldset {
-  border: none;
+  color: var(--azul-medico);
+  font-size: 24px;
   margin-bottom: 25px;
-}
-
-legend {
-  color: var(--color-primario-profesional);
   font-weight: 700;
-  padding: 0;
-  font-size: 19px;
-  margin-bottom: 15px;
-  border-bottom: 2px solid rgba(21, 101, 192, 0.1);
-  display: block;
-  width: 100%;
 }
 
-.input-group {
-  margin-bottom: 18px;
+h3 {
+  color: var(--texto-oscuro);
+  font-size: 18px;
+  margin: 0;
 }
 
+/* 4. Formulario e Inputs */
 label {
   display: block;
   font-weight: 600;
-  margin-bottom: 7px;
-  color: var(--color-texto-principal);
-  font-size: 15px;
-}
-
-input[type="number"],
-input[type="time"],
-input[type="text"],
-input[type="date"],
-select {
-  width: 100%;
-  padding: 16px;
-  border: 2px solid var(--color-borde-input);
-  border-radius: 12px;
-  background-color: var(--color-blanco-puro);
-  color: var(--color-texto-principal);
-  font-size: 16px;
-  transition: all 0.2s ease-in-out;
-}
-
-/* Efecto de foco profesional exacto */
-input:focus, select:focus {
-  border-color: var(--color-secundario-brillante);
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(58, 133, 219, 0.1);
-}
-
-/* 5. Botones Médicos Digitales Exactos */
-.btn-primary {
-  width: 100%;
-  padding: 18px;
-  background-color: var(--color-primario-profesional);
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.2);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-secundario-brillante);
-  transform: translateY(-2px);
-}
-
-/* Botón PDF Minimalista Profesional */
-.btn-pdf {
-  width: 100%;
-  padding: 16px;
-  background-color: transparent;
-  color: var(--color-primario-profesional);
-  border: 2px solid var(--color-primario-profesional);
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-pdf:hover {
-  background-color: rgba(21, 101, 192, 0.05);
-}
-
-/* 6. Historial Clínico Exacto */
-#historial-container {
-  margin-top: 30px;
-}
-
-h2 {
-  font-size: 20px;
-  color: var(--color-texto-principal);
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.historial-item {
-  background-color: var(--color-fondo-clínico);
-  border: 1px solid var(--color-borde-input);
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 15px;
-  border-left: 6px solid var(--color-primario-profesional);
-  box-shadow: 0 4px 10px var(--color-sombra);
-}
-
-.historial-item.alerta {
-  background-color: #fff5f5;
-  border-color: #ffcccc;
-  border-left-color: var(--color-alerta-clinica);
-}
-
-.historial-item h4 {
-  color: var(--color-texto-principal);
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-
-.historial-item span {
-  display: block;
+  color: var(--texto-oscuro);
+  margin-bottom: 5px;
+  margin-top: 15px;
   font-size: 14px;
-  color: var(--color-texto-suave);
-  margin-bottom: 4px;
 }
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--borde);
+  border-radius: 12px;
+  font-size: 16px;
+  color: var(--texto-oscuro);
+  background-color: var(--blanco-puro);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--azul-medico);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.1);
+}
+
+/* Cuadrícula (Grid) para campos dobles */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* 5. Botones */
+button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
